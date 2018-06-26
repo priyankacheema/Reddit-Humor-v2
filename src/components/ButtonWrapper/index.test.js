@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ButtonWrapper from './ButtonWrapper';
+import Index from './index';
 
-describe('<ButtonWrapper />', () => {
+describe('<Index />', () => {
   test('renders', () => {
-    const wrapper = shallow(<ButtonWrapper />);
+    const wrapper = shallow(<Index />);
     expect(wrapper).toMatchSnapshot();
   });
 });

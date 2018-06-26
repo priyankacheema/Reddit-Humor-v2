@@ -28,7 +28,7 @@ Each of these are set with the next set of developers coming in behind us in min
 ### Implemention Details
 ##### Shape of the Redux Store
 * `images: []`,
-  * This is an `array` of `objects` containing an image `url` , `id`, and `title`: `{url: 'https://dafa', id: 1, title: 'some title'}`
+  * This is an `array` of `objects` containing an image `url` , `id`, and `title`: `{url: 'https://dafa', id: 1, title: 'some title', gif: true}`
 * `current:  0`
   * This is the current `index` of `images` being displayed
 * `likes: {}`
