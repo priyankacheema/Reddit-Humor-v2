@@ -8,11 +8,15 @@ describe('fetchProgrammerHumor', () => {
     let fetchStub
 
     beforeEach(() => {
+
         fetchStub = sinon.stub(global, 'fetch')
+
     })
 
     afterEach(() => {
+
         sinon.restore()
+
     })
 
     it('should be called once with the correct endpoint', async () => {
@@ -40,6 +44,27 @@ describe('fetchProgrammerHumor', () => {
 
         })
 
+    })
+
+    describe('and it is unsuccessful', () => {
+
+        it('Should return an error', async () => {
+
+            const mockError = new Error('101001011100')
+            fetchStub.rejects(mockError)
+
+            try {
+
+                const data = await fetchProgrammerHumor()
+                expect(true).to.be.false()
+
+            } catch (e) {
+
+                expect(e.message).to.be.equal(mockError.message)
+
+            }
+
+        })
     })
 
 })

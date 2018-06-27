@@ -4,8 +4,17 @@ export const URL = 'https://www.reddit.com/r/programmerhumor/hot/.json?raw_json=
 
 export const fetchProgrammerHumor = async () => {
 
-    const response = await fetch(URL)
-    const json = await response.json()
+    try {
 
-    return json
+        const response = await fetch(URL)
+        const json = await response.json()
+
+        return json
+
+    } catch(err) {
+
+        return Promise.reject(err)
+
+    }
+
 }
