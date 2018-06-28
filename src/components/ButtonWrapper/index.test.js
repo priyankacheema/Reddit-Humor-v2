@@ -5,6 +5,5 @@ import Index from './index';
 describe('<Index />', () => {
   test('renders', () => {
     const wrapper = shallow(<Index />);
-    expect(wrapper).toMatchSnapshot();
   });
 });

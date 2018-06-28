@@ -48,7 +48,7 @@ describe('fetchProgrammerHumor', () => {
 
     describe('and it is unsuccessful', () => {
 
-        it('Should return an error', async () => {
+        it('should return an error', async () => {
 
             const mockError = new Error('101001011100')
             fetchStub.rejects(mockError)
