@@ -36,7 +36,7 @@ Each of these are set with the next set of developers coming in behind us in min
 * `nsfw: {}`
   * This is another `table`, except is will be a mapping of flagged posts: `{ [id]: true, [id]: false }`
 * `gifDuration: {}`
-  * This is another `table`, if an `image` is a `gif` then it's duration will be stored here: `{ [id]: true, [id]: false }`
+  * This is another `table`, if an `image` is a `gif` then it's duration will be stored here: `{ [id]: 1021, [id]: 111 }`
   * If an image is not a gif, perform a lookup in this table will return `undefined`
   
 ##### Components
