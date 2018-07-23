@@ -1,6 +1,6 @@
 import * as types from './actions-list'
 import {fetchProgrammerHumor} from '../utils/fetchProgrammerHumor'
-import {generateImages, getPosts, getId} from '../utils/parseUtils'
+import {getPosts, getId, generateImageData} from '../utils/parseUtils'
 
 export const updateImages = async (dispatch) => {
 
@@ -14,8 +14,10 @@ export const updateImages = async (dispatch) => {
 
         posts.map((post) => {
 
-            images.push(generateImages(post))
-            const id = getId(post)
+            const imageData = generateImageData(post)
+            const {id} = imageData
+
+            images.push(imageData)
             likes[id] = 0
             nsfw[id] = false
             gifDuration[id] = 0
