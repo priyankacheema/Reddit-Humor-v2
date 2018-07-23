@@ -1,0 +1,4 @@
+export const SET_IMAGES_DATA = 'SET_IMAGES_DATA'
+export const SET_CURRENT_INDEX = 'SET_CURRENT_INDEX'
+export const INCREASE_LIKES = 'INCREASE_LIKES'
+export const SET_NSFW = 'SET_NSFW'
