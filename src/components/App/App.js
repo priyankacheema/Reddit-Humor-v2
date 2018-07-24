@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
-import {fetchProgrammerHumor} from '../../utils/fetchProgrammerHumor'
-import * as parseUtils from '../../utils/parseUtils'
+
+import Display from '../Display/display';
 
 class App extends Component {
 
   render() {
     return (
-      <div className="App">
-      </div>
+      <main className="App">
+        <Display />
+      </main>
     );
   }
 }
