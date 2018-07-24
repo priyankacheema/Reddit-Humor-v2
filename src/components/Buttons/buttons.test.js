@@ -19,4 +19,29 @@ describe('Given Display', () => {
     const component = renderComponent();
     expect(component.is('section.user-buttons')).to.be.true();
   })
+
+  it('should contain a like button', () => {
+    const component = renderComponent();
+    expect(component.find('button.like-button').exists()).to.be.true();
+  })
+
+  it('should contain a NSFW button', () => {
+    const component = renderComponent();
+    expect(component.find('button.NSFW-button').exists()).to.be.true();
+  })
+
+  it('should contain a previous button', () => {
+    const component = renderComponent();
+    expect(component.find('button.previous-button').exists()).to.be.true();
+  })
+
+  it('should contain a next button', () => {
+    const component = renderComponent();
+    expect(component.find('button.next-button').exists()).to.be.true();
+  })
+
+  it('should contain a slack button', () => {
+    const component = renderComponent();
+    expect(component.find('button.slack-button').exists()).to.be.true();
+  })
 })
