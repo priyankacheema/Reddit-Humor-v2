@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Buttons from '../Buttons/buttons';
-import ConnectedDisplayImage from '../DisplayImage/connectedDisplayImage';
+import Buttons from '../Buttons/connectedButtons';
+import DisplayImage from '../DisplayImage/connectedDisplayImage';
 
 class Display extends Component {
 
@@ -13,7 +13,7 @@ class Display extends Component {
     return (
       <section className="display">
         <Buttons />
-        <ConnectedDisplayImage />
+        <DisplayImage />
       </section>
     )
   }

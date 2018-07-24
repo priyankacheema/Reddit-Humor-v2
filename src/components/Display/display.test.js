@@ -36,7 +36,7 @@ describe('Given Display', () => {
 
   it('should contain the Buttons component', () => {
     const component = renderComponent();
-    expect(component.find('Buttons').exists()).to.be.true();
+    expect(component.find('Connect(Buttons)').exists()).to.be.true();
   })
 
   it('should contain a DisplayImage component', () => {
