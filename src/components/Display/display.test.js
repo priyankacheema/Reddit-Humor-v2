@@ -1,12 +1,9 @@
 import Display from './display';
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 import { expect } from 'code';
 import { shallow } from 'enzyme';
 import sinon from 'sinon'
-
-import * as Actions from '../../actions/humor';
 
 describe('Given Display', () => {
   const images= [
@@ -44,7 +41,7 @@ describe('Given Display', () => {
 
   it('should contain a DisplayImage component', () => {
     const component = renderComponent();
-    expect(component.find('DisplayImage').exists()).to.be.true();
+    expect(component.find('Connect(DisplayImage)').exists()).to.be.true();
   })
 
   it('should fetch images upon mounting', () => {

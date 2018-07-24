@@ -1,8 +1,9 @@
-import ConnectedDisplay from './connectedDisplay';
+import ConnectedDisplayImage from './connectedDisplayImage';
 import React from 'react';
 
 import { expect } from 'code';
 import { shallow } from 'enzyme';
+import sinon from 'sinon'
 
 import configureMockStore from 'redux-mock-store';
 
@@ -31,14 +32,19 @@ describe('Given a Connected Display Component', () => {
   }
 
   function renderComponent(props = requiredProps()) {
-    return (shallow(<connectedDisplay { ...props } store={store} />))
+    return (shallow(<ConnectedDisplayImage { ...props } store={store} />))
   }
 
   
-  describe('mapDispatchToProps', () => {
-    it('contains a prop of getHumor', () => {
-      const component = shallow(<ConnectedDisplay store={store} />)
-      expect(component.props().getHumor).to.be.a.function()
+  describe('mapStateToProps', () => {
+    it('contains a prop of images', () => {
+      const component = renderComponent();
+      expect(component.props().images).to.equal(images)
+    })
+
+    it('contains a prop of current', () => {
+      const component = renderComponent();
+      expect(component.props().current).to.equal(0)
     })
   })
   
