@@ -5,9 +5,11 @@ import ReactDOM from 'react-dom';
 import { expect } from 'code';
 import { shallow } from 'enzyme';
 
-describe('Given Display', () => {
+describe('Given Buttons', () => {
   function requiredProps(overRides={}) {
-    const props = {};
+    const props = {
+      current: 0
+    };
     return { ...props, ...overRides }
   }
 
@@ -20,28 +22,49 @@ describe('Given Display', () => {
     expect(component.is('section.user-buttons')).to.be.true();
   })
 
-  it('should contain a like button', () => {
+  describe('The Like Button', () => {
     const component = renderComponent();
-    expect(component.find('button.like-button').exists()).to.be.true();
+    const button = component.find('button.like-button');
+
+    it('should contain a like button', () => {
+      expect(button.exists()).to.be.true();
+    })
   })
 
-  it('should contain a NSFW button', () => {
+  describe('The NSFW Button', () => {
     const component = renderComponent();
-    expect(component.find('button.NSFW-button').exists()).to.be.true();
+    const button = component.find('button.NSFW-button');
+
+    it('should contain a NSFW button', () => {
+      expect(button.exists()).to.be.true();
+    })
   })
 
-  it('should contain a previous button', () => {
+  describe('The Previous Button', () => {
+    const component = renderComponent()
+    const button = component.find('button.previous-button')
+
+    it('should contain a previous button', () => {
+      expect(button.exists()).to.be.true();
+    })
+  })
+  
+  describe('The Next Button', () => {
     const component = renderComponent();
-    expect(component.find('button.previous-button').exists()).to.be.true();
+    const button = component.find('button.next-button')
+    
+    it('should contain a next button', () => {
+      expect((button).exists()).to.be.true();
+    })
   })
 
-  it('should contain a next button', () => {
+  describe('The Slack Button', () => {
     const component = renderComponent();
-    expect(component.find('button.next-button').exists()).to.be.true();
+    const button = component.find('button.slack-button')
+
+    it('should contain a slack button', () => {
+      expect(button.exists()).to.be.true();
+    })
   })
 
-  it('should contain a slack button', () => {
-    const component = renderComponent();
-    expect(component.find('button.slack-button').exists()).to.be.true();
-  })
 })

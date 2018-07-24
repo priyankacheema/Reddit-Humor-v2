@@ -16,7 +16,8 @@ describe('Given Display', () => {
     const props = {
       images,
       current: 0,
-      gitDuration: 0
+      gitDuration: {},
+      likes: { 1:0, 2:0, 3:0}
     };
 
     return { ...props, ...overRides }

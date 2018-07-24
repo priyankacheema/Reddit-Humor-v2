@@ -6,8 +6,9 @@ import { expect } from 'code';
 import { shallow } from 'enzyme';
 
 describe('Given Display', () => {
+  const image = 'https://i.redditmedia.com/hvSYlYPQ_ntzAM1kSpsIG1Tab6R6Ma8Oqyxlv5mf7uM.jpg?s=9c9b598827890400f80e0eb3ee2aaf49'
   function requiredProps(overRides={}) {
-    const props = {};
+    const props = { image };
     return { ...props, ...overRides }
   }
 
