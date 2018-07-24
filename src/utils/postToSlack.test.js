@@ -28,7 +28,7 @@ describe('Given a slack service', () => {
     sinon.restore()
   })
 
-  describe('When the service is called successfuly', () => {
+  describe('When the service is called successfully', () => {
     it('should post to slack webhook', () => {
       fetchStub.resolves({ json: sinon.spy() })
 
