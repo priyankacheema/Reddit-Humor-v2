@@ -12,7 +12,12 @@ describe('humor reducers', () => {
 
             it('should update the store with the data load', () => {
 
-                const dataLoad = {images: [{}, {}, {}], likes: {xyz8u0B: 0}, nsfw: {xyz8u0B: false}, gifDuration: {xyz8u0B: 0}}
+                const dataLoad = {
+                    images: [{}, {}, {}],
+                    likes: {xyz8u0B: 0},
+                    nsfw: {xyz8u0B: false},
+                    gifDuration: {xyz8u0B: 0}
+                }
                 const action = actions.initStore(dataLoad)
 
                 const expectedState = {...reducers.initialState, ...dataLoad}
@@ -25,6 +30,25 @@ describe('humor reducers', () => {
         })
 
         describe('and SET_CURRENT_INDEX action is passed', () => {
+
+
+            it('should set the current index in state equal to the given index', () => {
+
+                const expectedIndex = 10
+                const action = actions.setCurrentIndex(expectedIndex)
+
+                const expectedState = {...reducers.initialState, current: expectedIndex}
+
+                const newState = reducers.humorReducer(undefined, action)
+
+                expect(newState).to.equal(expectedState)
+
+            })
+
+
+        })
+
+        describe('and INCREASE_LIKES action is passed', () => {
 
             it('should increase the number of likes of the given id', () => {
 
@@ -44,7 +68,7 @@ describe('humor reducers', () => {
             })
 
         })
-
+        
     })
 
 })
