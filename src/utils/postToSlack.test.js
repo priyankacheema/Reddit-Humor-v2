@@ -40,14 +40,14 @@ describe('Given a slack service', () => {
         body: JSON.stringify(mockPayload)
       })
     })
-    
-    // TODO: not sure why this test is breaking the test runner can anyone give some insight?
-    // describe('when the services is unsuccessful', () => {
-    //   it('should return an error', () => {
-    //     fetchStub.rejects({ json: 'bork bork' })
-    //     sendToSlack(mockMessage, mockGif)
-    //       .catch(e => expect(e).to.not.equal(undefined))
-    //   })
-    // })
+
+    describe('when the services is unsuccessful', () => {
+      it('should return an error', () => {
+        fetchStub.rejects({ json: 'bork bork' })
+        sendToSlack(mockMessage, mockGif)
+          .then(data => expect(data).to.be.undefined())
+          .catch(e => expect(e).to.not.equal(undefined))
+      })
+    })
   })
 })
