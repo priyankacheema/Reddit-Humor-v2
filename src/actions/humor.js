@@ -2,7 +2,7 @@ import * as types from './actions-list'
 import {fetchProgrammerHumor} from '../utils/fetchProgrammerHumor'
 import {getPosts, extractForStore} from '../utils/parseUtils'
 
-export const getHumor = async (dispatch) => {
+export const getHumor = () => async (dispatch) => {
 
     const response = await fetchProgrammerHumor()
     const posts = getPosts(response)
