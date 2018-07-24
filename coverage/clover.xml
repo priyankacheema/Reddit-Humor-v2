@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1532446082127" clover="3.2.0">
-  <project timestamp="1532446082127" name="All files">
-    <metrics statements="73" coveredstatements="45" conditionals="23" coveredconditionals="17" methods="24" coveredmethods="17" elements="120" coveredelements="79" complexity="0" loc="73" ncloc="73" packages="5" files="8" classes="8">
+<coverage generated="1532447343498" clover="3.2.0">
+  <project timestamp="1532447343498" name="All files">
+    <metrics statements="73" coveredstatements="51" conditionals="23" coveredconditionals="18" methods="24" coveredmethods="20" elements="120" coveredelements="89" complexity="0" loc="73" ncloc="73" packages="5" files="8" classes="8">
       <package name="src">
         <metrics statements="6" coveredstatements="1" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <file name="index.js" path="C:\Users\swatkins\Documents\projects\rhv210x\src\index.js">
@@ -48,9 +48,9 @@
         </file>
       </package>
       <package name="src.reducers">
-        <metrics statements="20" coveredstatements="14" conditionals="4" coveredconditionals="2" methods="5" coveredmethods="2"/>
+        <metrics statements="20" coveredstatements="20" conditionals="4" coveredconditionals="3" methods="5" coveredmethods="5"/>
         <file name="humor.js" path="C:\Users\swatkins\Documents\projects\rhv210x\src\reducers\humor.js">
-          <metrics statements="20" coveredstatements="14" conditionals="4" coveredconditionals="2" methods="5" coveredmethods="2"/>
+          <metrics statements="20" coveredstatements="20" conditionals="4" coveredconditionals="3" methods="5" coveredmethods="5"/>
           <line num="3" count="1" type="stmt"/>
           <line num="13" count="1" type="cond" truecount="0" falsecount="1"/>
           <line num="15" count="1" type="stmt"/>
@@ -60,17 +60,17 @@
           <line num="20" count="1" type="stmt"/>
           <line num="24" count="1" type="stmt"/>
           <line num="26" count="1" type="stmt"/>
-          <line num="28" count="0" type="stmt"/>
-          <line num="29" count="0" type="stmt"/>
-          <line num="31" count="0" type="stmt"/>
+          <line num="28" count="1" type="stmt"/>
+          <line num="29" count="1" type="stmt"/>
+          <line num="31" count="1" type="stmt"/>
           <line num="35" count="1" type="stmt"/>
-          <line num="37" count="0" type="stmt"/>
-          <line num="38" count="0" type="stmt"/>
-          <line num="40" count="0" type="stmt"/>
+          <line num="37" count="1" type="stmt"/>
+          <line num="38" count="1" type="stmt"/>
+          <line num="40" count="1" type="stmt"/>
           <line num="44" count="1" type="cond" truecount="1" falsecount="0"/>
-          <line num="46" count="1" type="stmt"/>
-          <line num="55" count="1" type="stmt"/>
-          <line num="56" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="46" count="5" type="stmt"/>
+          <line num="55" count="5" type="stmt"/>
+          <line num="56" count="5" type="cond" truecount="2" falsecount="0"/>
         </file>
       </package>
       <package name="src.utils">

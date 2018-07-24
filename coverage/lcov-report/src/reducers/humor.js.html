@@ -20,31 +20,31 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">66.67% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>14/21</span>
+        <span class='fraction'>21/21</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
+        <span class="strong">75% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>2/4</span>
+        <span class='fraction'>3/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">40% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>2/5</span>
+        <span class='fraction'>5/5</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">70% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>14/20</span>
+        <span class='fraction'>20/20</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -137,35 +137,35 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -197,23 +197,23 @@ export const initStore = (state = <span class="branch-0 cbranch-no" title="branc
 &nbsp;
 }
 &nbsp;
-export const setCurrentIndex = <span class="fstat-no" title="function not covered" >(s</span>tate, {i}) =&gt; (<span class="cstat-no" title="statement not covered" >{...state, current: i})</span>
+export const setCurrentIndex = (state, {i}) =&gt; ({...state, current: i})
 &nbsp;
-export const increaseLikes = <span class="fstat-no" title="function not covered" >(s</span>tate, {id}) =&gt; {
+export const increaseLikes = (state, {id}) =&gt; {
 &nbsp;
-    const numLikes = <span class="cstat-no" title="statement not covered" >state.likes[id] + 1</span>
-    const likes = <span class="cstat-no" title="statement not covered" >{...state.likes, id: numLikes}</span>
+    const numLikes = state.likes[id] + 1
+    const likes = {...state.likes, [id]: numLikes}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return {...state, likes}</span>
+    return {...state, likes}
 &nbsp;
 }
 &nbsp;
-export const setNsfw = <span class="fstat-no" title="function not covered" >(s</span>tate, {id}) =&gt; {
+export const setNsfw = (state, {id}) =&gt; {
 &nbsp;
-    const nsfw = <span class="cstat-no" title="statement not covered" >{...state.nsfw}</span>
-<span class="cstat-no" title="statement not covered" >    nsfw[id] = true</span>
+    const nsfw = {...state.nsfw}
+    nsfw[id] = true
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return {...state, nsfw}</span>
+    return {...state, nsfw}
 &nbsp;
 }
 &nbsp;
@@ -229,7 +229,7 @@ export const humorReducer = (state = initialState, action) =&gt; {
     }
 &nbsp;
     const reducer = actionsHandler[action.type]
-    return reducer ? reducer(state, action) : <span class="branch-1 cbranch-no" title="branch not covered" >state</span>
+    return reducer ? reducer(state, action) : state
 &nbsp;
 }
 &nbsp;
@@ -244,7 +244,7 @@ export const humorReducer = (state = initialState, action) =&gt; {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Jul 24 2018 10:28:01 GMT-0500 (Central Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Jul 24 2018 10:49:03 GMT-0500 (Central Daylight Time)
 </div>
 </div>
 <script src="..\..\prettify.js"></script>

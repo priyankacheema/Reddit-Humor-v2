@@ -32,7 +32,7 @@ describe('humor reducers', () => {
         describe('and SET_CURRENT_INDEX action is passed', () => {
 
 
-            it('should set the current index in state equal to the given index', () => {
+            it('should set the current index equal to the given index', () => {
 
                 const expectedIndex = 10
                 const action = actions.setCurrentIndex(expectedIndex)
@@ -79,8 +79,37 @@ describe('humor reducers', () => {
                 const expectedState = {...reducers.initialState, nsfw: {[id]: true}}
 
                 const newState = reducers.humorReducer(undefined, action)
-                
+
                 expect(newState).to.equal(expectedState)
+
+            })
+
+        })
+
+        describe('and no valid action is passed', () => {
+
+            describe('and the store is in initial state', () => {
+
+                it('should return the current state', () => {
+
+                    const fakeAction = {type: 'muawhaha'}
+
+                    expect(reducers.humorReducer(undefined, fakeAction)).to.equal(reducers.initialState)
+
+                })
+
+            })
+
+            describe('and a state is passed in', () => {
+
+                it('should return that state', () => {
+
+                    const fakeAction = {type: 'fake'}
+                    const mockState = {someMock: ''}
+
+                    expect(reducers.humorReducer(mockState, fakeAction)).to.equal(mockState)
+
+                })
 
             })
 
