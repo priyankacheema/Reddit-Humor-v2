@@ -1,4 +1,4 @@
-import Display from './display';
+import Buttons from './buttons';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -12,16 +12,11 @@ describe('Given Display', () => {
   }
 
   function renderComponent(props = requiredProps()) {
-    return (shallow(<Display { ...props } />))
+    return (shallow(<Buttons { ...props } />))
   }
 
   it('should exist with a specifying class name', () => {
     const component = renderComponent();
-    expect(component.is('section.display-image')).to.be.true();
-  })
-
-  it('should contain the Buttons component', () => {
-    const component = renderComponent();
-    expect(component.find('Buttons').exists()).to.be.true();
+    expect(component.is('section.user-buttons')).to.be.true();
   })
 })
