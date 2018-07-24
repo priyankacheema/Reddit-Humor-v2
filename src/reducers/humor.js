@@ -10,13 +10,14 @@ export const initialState = {
 
 }
 
-export const initStore = (state, dataLoad) => {
+export const initStore = (state = initialState, {dataLoad}) => {
 
-    const {images, likes, nsfw, gifDuration} = {dataLoad}
-    const newLikes = {likes, ...state.likes}
-    const newNsfw = {nsfw, ...state.nsfw}
+    const likes = {...dataLoad.likes, ...state.likes}
+    const nsfw = {...dataLoad.nsfw, ...state.nsfw}
+    const images = [...dataLoad.images]
+    const gifDuration = dataLoad.gifDuration
 
-    return {...state, images, likes: newLikes, nsfw: newNsfw, gifDuration}
+    return {...state, images, likes, nsfw, gifDuration}
 
 }
 
