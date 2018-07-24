@@ -1,5 +1,15 @@
 import {expect} from 'code'
-import {getUrl, isGif, getTitle, getPosts, getId, generateImages, generateLikes, generateNSFW, isImage, isStickied} from './parseUtils'
+import {
+    getUrl,
+    isGif,
+    getTitle,
+    getPosts,
+    getId,
+    getPostImageInfo,
+    isImage,
+    isStickied,
+    extractForStore
+} from './parseUtils'
 
 const data = require('../data/response')
 
@@ -154,7 +164,7 @@ describe('parseUtils', () => {
 
         })
 
-        describe('generateImages', () => {
+        describe('getPostImageInfo', () => {
 
             it('should generate a structured object with properties set to the return values of `getId, getTitle, getUrl, isGif` fns', () => {
 
@@ -169,52 +179,34 @@ describe('parseUtils', () => {
                 const expectedDataWithGif = {id: getId(mockDataWithGif), title: getTitle(mockDataWithGif), url: getUrl(mockDataWithGif), gif: isGif(mockDataWithGif)}
                 const expectedDataNoGif = {id: getId(mockDataNoGif), title: getTitle(mockDataNoGif), url: getUrl(mockDataNoGif), gif: isGif(mockDataNoGif)}
 
-                expect(generateImages(mockDataWithGif)).to.equal(expectedDataWithGif)
-                expect(generateImages(mockDataNoGif)).to.equal(expectedDataNoGif)
+                expect(getPostImageInfo(mockDataWithGif)).to.equal(expectedDataWithGif)
+                expect(getPostImageInfo(mockDataNoGif)).to.equal(expectedDataNoGif)
 
             })
 
         })
 
-        describe('generateLikes', () => {
+        describe('extractForStore', () => {
 
+            it('should return an object with data ready to be inserted into the Redux store from an array of posts', () => {
 
-            it('should generate a table of id: likes, with likes set to 0', () => {
+                const id = 'xyB79'
 
-                const expectedData =  {xgtYU78: 0, ynHJ90: 0}
-                const mockData = [{id: 'xgtYU78'}, {id: 'ynHJ90'}]
+                const mockPosts = [{id, title: '010101011100101', preview: {variants: {gif: {source: {url: 'https://isagif'}}}}, gif: true}]
 
-                const o1 = generateLikes(mockData[0])
-                const o2 = generateLikes(mockData[1])
+                const expectedImages = [{id: getId(mockPosts[0]), title: getTitle(mockPosts[0]), url: getUrl(mockPosts[0]), gif: isGif(mockPosts[0])}]
+                const expectedLikes = {[id]: 0}
+                const expectedNsfw = {[id]: false}
+                const expectedGifDuration = {[id]: 0}
 
-                const likes = {...o1, ...o2}
+                const expectedStoreData = {images: expectedImages, likes: expectedLikes, nsfw: expectedNsfw, gifDuration: expectedGifDuration}
 
-                expect(likes).to.equal(expectedData)
+                expect(extractForStore(mockPosts)).to.equal(expectedStoreData)
+
 
             })
 
         })
-
-        describe('generateNSFW', () => {
-
-
-            it('should generate a table of id: nsfw-flag, with nsfw set to false', () => {
-
-                const expectedData =  {xgtYU78: false, ynHJ90: false}
-                const mockData = [{id: 'xgtYU78'}, {id: 'ynHJ90'}]
-
-                const o1 = generateNSFW(mockData[0])
-                const o2 = generateNSFW(mockData[1])
-
-                const nsfw = {...o1, ...o2}
-
-                expect(nsfw).to.equal(expectedData)
-
-            })
-
-        })
-
-
 
     })
 

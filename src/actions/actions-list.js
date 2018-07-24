@@ -1,0 +1,4 @@
+export const INIT_STORE = 'INIT_STORE'
+export const SET_CURRENT_INDEX = 'SET_CURRENT_INDEX'
+export const INCREASE_LIKES = 'INCREASE_LIKES'
+export const SET_NSFW = 'SET_NSFW'
