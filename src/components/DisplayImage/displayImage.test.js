@@ -19,4 +19,9 @@ describe('Given Display', () => {
     const component = renderComponent();
     expect(component.is('section.display-image')).to.be.true();
   })
+
+  it('should contain an image', () => {
+    const component = renderComponent();
+    expect(component.find('img').exists()).to.be.true()
+  })
 })

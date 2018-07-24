@@ -6,10 +6,12 @@ import DisplayImage from '../DisplayImage/displayImage';
 class Display extends Component {
   
   render() {
+    const { images, current } = this.props;
+
     return (
       <section className="display">
         <Buttons />
-        <DisplayImage />
+        <DisplayImage image={images[current]} />
       </section>
     )
   }
