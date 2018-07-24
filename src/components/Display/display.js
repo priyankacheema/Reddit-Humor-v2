@@ -4,7 +4,7 @@ import Buttons from '../Buttons/buttons';
 import DisplayImage from '../DisplayImage/displayImage';
 
 class Display extends Component {
-  
+
   render() {
     const { images, current } = this.props;
 
@@ -32,7 +32,7 @@ Display.propTypes = {
   images: PropTypes.array.isRequired,
   current: PropTypes.number.isRequired,
   gitDuration: PropTypes.object.isRequired,
-  likes: PropTypes.object.isRequired
+  likes: PropTypes.object.isRequired,
 }
 
 
