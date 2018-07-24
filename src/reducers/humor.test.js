@@ -68,7 +68,24 @@ describe('humor reducers', () => {
             })
 
         })
-        
+
+        describe('and SET_NSFW action is passed', () => {
+
+            it('should flag the given id as NSFW', () => {
+
+                const id = 'xyz8uoB'
+                const action = actions.setNsfw(id)
+
+                const expectedState = {...reducers.initialState, nsfw: {[id]: true}}
+
+                const newState = reducers.humorReducer(undefined, action)
+                
+                expect(newState).to.equal(expectedState)
+
+            })
+
+        })
+
     })
 
 })
