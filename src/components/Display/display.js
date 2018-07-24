@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Buttons from '../Buttons/buttons';
+import DisplayImage from '../DisplayImage/displayImage';
 
 class Display extends Component {
   
   render() {
     return (
-      <section className="display-image">
+      <section className="display">
         <Buttons />
+        <DisplayImage />
       </section>
     )
   }

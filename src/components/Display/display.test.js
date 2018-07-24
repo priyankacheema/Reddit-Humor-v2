@@ -17,11 +17,16 @@ describe('Given Display', () => {
 
   it('should exist with a specifying class name', () => {
     const component = renderComponent();
-    expect(component.is('section.display-image')).to.be.true();
+    expect(component.is('section.display')).to.be.true();
   })
 
   it('should contain the Buttons component', () => {
     const component = renderComponent();
     expect(component.find('Buttons').exists()).to.be.true();
+  })
+
+  it('should contain a DisplayImage component', () => {
+    const component = renderComponent();
+    expect(component.find('DisplayImage').exists()).to.be.true();
   })
 })
