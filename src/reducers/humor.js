@@ -26,7 +26,7 @@ export const setCurrentIndex = (state, {i}) => ({...state, current: i})
 export const increaseLikes = (state, {id}) => {
 
     const numLikes = state.likes[id] + 1
-    const likes = {...state.likes, id: numLikes}
+    const likes = {...state.likes, [id]: numLikes}
 
     return {...state, likes}
 

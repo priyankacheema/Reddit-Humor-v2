@@ -6,7 +6,6 @@ import {expect} from 'code'
 
 describe('humor reducers', () => {
 
-
     describe('humorReducer', () => {
 
         describe('and INIT_STORE action is passed', () => {
@@ -18,6 +17,27 @@ describe('humor reducers', () => {
 
                 const expectedState = {...reducers.initialState, ...dataLoad}
                 const newState = reducers.humorReducer(undefined, action)
+
+                expect(newState).to.equal(expectedState)
+
+            })
+
+        })
+
+        describe('and SET_CURRENT_INDEX action is passed', () => {
+
+            it('should increase the number of likes of the given id', () => {
+
+                const id = 'xyz8uoB'
+                const numLikes = 1
+
+                const inputState = {...reducers.initialState}
+                inputState.likes[id] = numLikes
+
+                const expectedState = {...reducers.initialState, likes: {[id]: 2}}
+
+                const action = actions.increaseLikes(id)
+                const newState = reducers.humorReducer(inputState, action)
 
                 expect(newState).to.equal(expectedState)
 
