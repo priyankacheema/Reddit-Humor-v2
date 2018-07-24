@@ -22,7 +22,7 @@ describe('Given Display', () => {
 
   it('should contain the Display Component', () => {
     const component = renderComponent();
-    expect(component.find('Display').exists()).to.be.true();
+    expect(component.find('Connect(Display)').exists()).to.be.true();
   })
 
 })
