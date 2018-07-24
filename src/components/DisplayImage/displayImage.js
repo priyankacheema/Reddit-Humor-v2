@@ -10,7 +10,7 @@ const DisplayImage = (props) => {
 }
 
 DisplayImage.propTypes = {
-  image: PropTypes.string.isRequired
+  image: PropTypes.object.isRequired
 }
 
 export default DisplayImage

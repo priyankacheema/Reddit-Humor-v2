@@ -1,21 +1,23 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Buttons = (props) => {
+  const { increaseCurrent, decreaseCurrent, updateLike, updateNSFW, shareWithSlack  } = props;
 
   const handleClick = (e) => {
     const buttonType = e.target.name;
 
     switch(buttonType) {
       case 'next': 
-        alert(`dispatch action to update ${buttonType}!`)
+        return increaseCurrent();
       case 'previous': 
-        alert(`dispatch action to update ${buttonType}!`)
+        return decreaseCurrent();
       case 'like': 
-        alert(`dispatch action to update ${buttonType}!`)
+        return updateLike();
       case 'NSFW': 
-        alert(`dispatch action to update ${buttonType}!`)
+        return updateNSFW();
       case 'slack': 
-        alert(`dispatch action to update ${buttonType}!`)
+        return shareWithSlack();
       default:
         return
     }
@@ -30,6 +32,22 @@ const Buttons = (props) => {
       <button className="slack-button" name='slack' onClick={handleClick}>Share To Slack</button>
     </section>
   )
+}
+
+Buttons.defaultProps = {
+  increaseCurrent: () => {},
+  decreaseCurrent: () => {},
+  updateLike: () => {},
+  updateNSFW: () => {},
+  shareWithSlack: () => {}
+}
+
+Buttons.propTypes = {
+  increaseCurrent: PropTypes.func.isRequired,
+  decreaseCurrent: PropTypes.func.isRequired,
+  updateLike: PropTypes.func.isRequired,
+  updateNSFW: PropTypes.func.isRequired,
+  shareWithSlack: PropTypes.func.isRequired
 }
 
 export default Buttons
