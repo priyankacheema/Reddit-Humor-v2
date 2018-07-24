@@ -1,5 +1,5 @@
 import {expect} from 'code'
-import {getUrl, isGif, getTitle, getPosts, getId, generateImageData, generateLikes, generateNSFW, isImage, isStickied} from './parseUtils'
+import {getUrl, isGif, getTitle, getPosts, getId, getPostImageInfo, generateLikes, generateNSFW, isImage, isStickied} from './parseUtils'
 
 const data = require('../data/response')
 
@@ -154,7 +154,7 @@ describe('parseUtils', () => {
 
         })
 
-        describe('generateImageData', () => {
+        describe('getPostImageInfo', () => {
 
             it('should generate a structured object with properties set to the return values of `getId, getTitle, getUrl, isGif` fns', () => {
 
@@ -169,8 +169,8 @@ describe('parseUtils', () => {
                 const expectedDataWithGif = {id: getId(mockDataWithGif), title: getTitle(mockDataWithGif), url: getUrl(mockDataWithGif), gif: isGif(mockDataWithGif)}
                 const expectedDataNoGif = {id: getId(mockDataNoGif), title: getTitle(mockDataNoGif), url: getUrl(mockDataNoGif), gif: isGif(mockDataNoGif)}
 
-                expect(generateImageData(mockDataWithGif)).to.equal(expectedDataWithGif)
-                expect(generateImageData(mockDataNoGif)).to.equal(expectedDataNoGif)
+                expect(getPostImageInfo(mockDataWithGif)).to.equal(expectedDataWithGif)
+                expect(getPostImageInfo(mockDataNoGif)).to.equal(expectedDataNoGif)
 
             })
 

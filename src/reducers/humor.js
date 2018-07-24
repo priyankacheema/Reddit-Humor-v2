@@ -10,7 +10,7 @@ export const initialState = {
 
 }
 
-export const setImagesData = (state, dataLoad) => {
+export const initStore = (state, dataLoad) => {
 
     const {images, likes, nsfw, gifDuration} = {dataLoad}
     const newLikes = {likes, ...state.likes}
@@ -22,7 +22,7 @@ export const setImagesData = (state, dataLoad) => {
 
 export const setCurrentIndex = (state, {i}) => ({...state, current: i})
 
-export const increateLikes = (state, {id}) => {
+export const increaseLikes = (state, {id}) => {
 
     const numLikes = state.likes[id] + 1
     const likes = {...state.likes, id: numLikes}
@@ -44,9 +44,9 @@ export const humorReducer = (state = initialState, action) => {
 
     const actionsHandler = {
 
-        [types.SET_IMAGES_DATA]: setImagesData,
+        [types.INIT_STORE]: initStore,
         [types.SET_CURRENT_INDEX]: setCurrentIndex,
-        [types.INCREASE_LIKES]: increateLikes,
+        [types.INCREASE_LIKES]: increaseLikes,
         [types.SET_NSFW]: setNsfw
 
     }
