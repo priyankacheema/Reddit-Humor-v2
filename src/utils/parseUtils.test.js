@@ -1,5 +1,15 @@
 import {expect} from 'code'
-import {getUrl, isGif, getTitle, getPosts, getId, getPostImageInfo, generateLikes, generateNSFW, isImage, isStickied} from './parseUtils'
+import {
+    getUrl,
+    isGif,
+    getTitle,
+    getPosts,
+    getId,
+    getPostImageInfo,
+    isImage,
+    isStickied,
+    extractForStore
+} from './parseUtils'
 
 const data = require('../data/response')
 
@@ -171,6 +181,28 @@ describe('parseUtils', () => {
 
                 expect(getPostImageInfo(mockDataWithGif)).to.equal(expectedDataWithGif)
                 expect(getPostImageInfo(mockDataNoGif)).to.equal(expectedDataNoGif)
+
+            })
+
+        })
+
+        describe('extractForStore', () => {
+
+            it('should return an object with data ready to be inserted into the Redux store from an array of posts', () => {
+
+                const id = 'xyB79'
+
+                const mockPosts = [{id, title: '010101011100101', preview: {variants: {gif: {source: {url: 'https://isagif'}}}}, gif: true}]
+
+                const expectedImages = [{id: getId(mockPosts[0]), title: getTitle(mockPosts[0]), url: getUrl(mockPosts[0]), gif: isGif(mockPosts[0])}]
+                const expectedLikes = {[id]: 0}
+                const expectedNsfw = {[id]: false}
+                const expectedGifDuration = {[id]: 0}
+
+                const expectedStoreData = {images: expectedImages, likes: expectedLikes, nsfw: expectedNsfw, gifDuration: expectedGifDuration}
+
+                expect(extractForStore(mockPosts)).to.equal(expectedStoreData)
+
 
             })
 

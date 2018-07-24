@@ -18,7 +18,7 @@ export const getUrl = (post) => isGif(post) ? post.preview.variants.gif.source.u
 
 export const getPostImageInfo = (post) => ({id: getId(post), url: getUrl(post), title: getTitle(post), gif: isGif(post)})
 
-export const extractForStore = (post) => {
+export const extractForStore = (posts) => {
 
     const images = []
     const likes = {}
