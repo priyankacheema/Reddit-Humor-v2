@@ -1,13 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './components/App/App';
-
-import rootReducer from './reducers';
-import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import  thunk from 'redux-thunk';
-
+import { createStore, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
+import App from './components/App/App'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import rootReducer from './reducers'
+import thunk from 'redux-thunk'
+import './index.css'
+import 'tachyons'
 
 const store = createStore(
   rootReducer,
@@ -20,4 +19,4 @@ ReactDOM.render(
     <App />
   </Provider>,
   document.getElementById('root')
-);
+)

@@ -11,10 +11,11 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = ({humor}) => {
   return {
-    current: state.humor.current,
-    image: state.humor.images[state.humor.current]
+    current: humor.current,
+    image: humor.images[humor.current],
+    images: humor.images
   }
 }
 

@@ -7,7 +7,7 @@ class App extends Component {
 
   render() {
     return (
-      <main className="App">
+      <main className="App min-vh-100">
         <Display />
       </main>
     );
