@@ -11,6 +11,11 @@ class Display extends Component {
     async componentDidMount() {
 
         await this.getHumorEvery(30000)
+
+    }
+
+    componentDidUpdate() {
+
         this.updateIndexEvery(5000)
 
     }
@@ -42,7 +47,7 @@ class Display extends Component {
 
         const time = image.gif ? getGifDuration(image.url) : ms
 
-        return setInterval(() => {
+        return setTimeout(() => {
 
             const nextIndex = getNextIndex(images, current)
             setCurrentIndex(nextIndex)
