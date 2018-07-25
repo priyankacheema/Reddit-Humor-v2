@@ -43,10 +43,10 @@ describe('Given a slack service', () => {
 
     describe('when the services is unsuccessful', () => {
       it('should return an error', () => {
-        fetchStub.rejects({ json: 'bork bork' })
+        fetchStub.rejects(new Error('bork bork'))
         sendToSlack(mockMessage, mockGif)
           .then(data => expect(data).to.be.undefined())
-          .catch(e => expect(e).to.not.equal(undefined))
+          .catch(err => expect(err).to.not.equal(undefined))
       })
     })
   })
