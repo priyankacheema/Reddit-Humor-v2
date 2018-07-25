@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import Display from '../Display/display';
+import Display from '../Display/connectedDisplay';
 
 class App extends Component {
 

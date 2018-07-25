@@ -7,7 +7,6 @@ export const getHumor = () => async (dispatch) => {
     const response = await fetchProgrammerHumor()
     const posts = getPosts(response)
     const dataLoad = extractForStore(posts)
-
     const action = initStore(dataLoad)
     dispatch(action)
 
