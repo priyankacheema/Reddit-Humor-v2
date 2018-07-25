@@ -35,7 +35,7 @@ Buttons.defaultProps = {
   previous: () => {},
   like: () => {},
   nsfw: () => {},
-  share: post => sendToSlack(post.title, post.url)
+  share: post => sendToSlack(post.title, post.url, post.id)
 }
 
 Buttons.propTypes = {
