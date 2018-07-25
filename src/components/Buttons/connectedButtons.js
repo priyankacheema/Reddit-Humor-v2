@@ -12,7 +12,6 @@ const mapDispatchToProps = dispatch => {
 }
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
     current: state.humor.current,
     image: state.humor.images[state.humor.current]
