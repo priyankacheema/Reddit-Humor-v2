@@ -13,7 +13,7 @@ export default function sendToSlack (message = '', imageUrl = undefined ) {
         ]
 		}
 
-	fetch(urlWebHook, {
+	return fetch(urlWebHook, {
         method: 'post',
         body: JSON.stringify(payload)
     })
