@@ -1,53 +1,48 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
+import sendToSlack from '../../utils/postToSlack'
 
-const Buttons = (props) => {
-  const { increaseCurrent, decreaseCurrent, updateLike, updateNSFW, shareWithSlack  } = props;
-
-  const handleClick = (e) => {
-    const buttonType = e.target.name;
-
-    switch(buttonType) {
-      case 'next': 
-        return increaseCurrent();
-      case 'previous': 
-        return decreaseCurrent();
-      case 'like': 
-        return updateLike();
-      case 'NSFW': 
-        return updateNSFW();
-      case 'slack': 
-        return shareWithSlack();
-      default:
-        return
-    }
-  }
-  
+const Buttons = props => {
   return (
-    <section className="user-buttons">
-      <button className="like-button" name='like' onClick={handleClick}>Like</button>
-      <button className="NSFW-button" name='NSFW' onClick={handleClick}>NSFW</button>
-      <button className="previous-button" name='previous' onClick={handleClick}>Previous</button>
-      <button className="next-button" name='next' onClick={handleClick}>Next</button>
-      <button className="slack-button" name='slack' onClick={handleClick}>Share To Slack</button>
-    </section>
+    <main className="user-buttons">
+      <button className="like" onClick={() => props.like(props.image.id)}>
+        Like
+      </button>
+      <button className="nsfw" onClick={() => props.nsfw(props.image.id)}>
+        NSFW
+      </button>
+      <button
+        className="previous"
+        onClick={() =>
+          props.previous(props.current === 0 ? 24 : props.current - 1)
+        }
+      >
+        Previous
+      </button>
+      <button className="next" onClick={() => props.next(props.current + 1)}>
+        Next
+      </button>
+      <button className="share" onClick={() => props.share(props.image)}>
+        Share
+      </button>
+    </main>
   )
 }
 
 Buttons.defaultProps = {
-  increaseCurrent: () => {},
-  decreaseCurrent: () => {},
-  updateLike: () => {},
-  updateNSFW: () => {},
-  shareWithSlack: () => {}
+  next: () => {},
+  previous: () => {},
+  like: () => {},
+  nsfw: () => {},
+  share: post => sendToSlack(post.title, post.url)
 }
 
 Buttons.propTypes = {
-  increaseCurrent: PropTypes.func.isRequired,
-  decreaseCurrent: PropTypes.func.isRequired,
-  updateLike: PropTypes.func.isRequired,
-  updateNSFW: PropTypes.func.isRequired,
-  shareWithSlack: PropTypes.func.isRequired
+  next: PropTypes.func.isRequired,
+  previous: PropTypes.func.isRequired,
+  like: PropTypes.func.isRequired,
+  nsfw: PropTypes.func.isRequired,
+  share: PropTypes.func.isRequired
 }
 
 export default Buttons

@@ -1,7 +1,22 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import Buttons from './buttons';
+import { connect } from 'react-redux'
+import Buttons from './buttons'
+import { setCurrentIndex, setNsfw, increaseLikes } from '../../actions/humor'
 
-import * as Actions from '../../actions/humor';
+const mapDispatchToProps = dispatch => {
+  return {
+    previous: id => dispatch(setCurrentIndex(id)),
+    next: id => dispatch(setCurrentIndex(id)),
+    nsfw: id => dispatch(setNsfw(id)),
+    like: id => dispatch(increaseLikes(id))
+  }
+}
 
-export default connect(null, { ...Actions })(Buttons);
+const mapStateToProps = state => {
+  console.log(state)
+  return {
+    current: state.humor.current,
+    image: state.humor.images[state.humor.current]
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Buttons)
