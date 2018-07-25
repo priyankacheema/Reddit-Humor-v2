@@ -30,10 +30,7 @@ describe('Given a slack service', () => {
 
   describe('When the service is called successfully', () => {
     it('should post to slack webhook', () => {
-      fetchStub.resolves({ json: sinon.spy() })
-
       sendToSlack(mockMessage, mockGif)
-
       sinon.assert.calledOnce(fetchStub)
       sinon.assert.calledWithExactly(fetchStub, urlWebHook, {
         method: 'post',
