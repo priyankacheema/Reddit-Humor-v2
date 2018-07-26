@@ -8,26 +8,25 @@ export default function sendToSlack (
   imageUrl = undefined,
   imageId
 ) {
-
   const payload = {
-      text: message,
-      attachments: [
-          {
-              fallback: 'this image failed to post',
-              text: `${message}`,
-              image_url: `${imageUrl}`,
-              thumb_url: `${imageUrl}`
-            }
-        ]
-    }
+    text: message,
+    attachments: [
+      {
+        fallback: 'this image failed to post',
+        text: `${message}`,
+        image_url: `${imageUrl}`,
+        thumb_url: `${imageUrl}`
+      }
+    ]
+  }
 
-    posted.includes(imageId)
-    ? (
-        console.log(Error("that's already been posted"))
-    )
-    : fetch(urlWebHook, {
-        method: 'post',
-        body: JSON.stringify(payload)
-    })
+  if (posted.includes(imageId)) {
+    console.log(Error("that's already been posted"))
+  } else {
     posted.push(imageId)
+    return fetch(urlWebHook, {
+      method: 'post',
+      body: JSON.stringify(payload)
+    })
+  }
 }
