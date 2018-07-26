@@ -28,14 +28,14 @@ const image = props => {
 
 const DisplayImage = props => {
   return (
-    <div>
+    <article className='display-image'>
       <h3 className="tc">
         {props.images[props.current] && props.images[props.current].title}
       </h3>
       <article className="display-image mw5 mt3 mw6-ns shadow-5 center">
         {image(props)}
       </article>
-    </div>
+    </article>
   )
 }
 

@@ -15,7 +15,12 @@ const Buttons = props => {
       <h2 className='ph3'>{props.likes[id]}</h2>
       <icon.AlertTriangle
         className="nsfw grow link ph3"
-        onClick={() => props.nsfw(props.image.id)}
+        onClick={() => {
+          props.nsfw(props.image.id)
+          props.next(
+            props.current === props.images.length - 1 ? 0 : props.current + 1
+          )}
+        }
       />
       <icon.ChevronsLeft
         className="previous dim grow link ph3"
