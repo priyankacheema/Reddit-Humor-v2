@@ -6,8 +6,7 @@ import getGifDuration from '../../utils/gifDuration'
 import {getNextIndex} from '../../utils/getNextIndex'
 
 class Display extends Component {
-
-
+    
     async componentDidMount() {
 
         await this.getHumorEvery(3600000)
@@ -15,7 +14,7 @@ class Display extends Component {
     }
 
     componentDidUpdate() {
-
+        
         this.updateIndexEvery(20000)
 
     }
