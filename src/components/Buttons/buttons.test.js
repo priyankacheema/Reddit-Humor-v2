@@ -45,7 +45,7 @@ describe('Given Buttons', () => {
         }
       ],
       like,
-      likes = 0,
+      likes: 0,
       next,
       nsfw,
       previous,
