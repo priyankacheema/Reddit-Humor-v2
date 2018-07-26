@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 
 import Display from '../Display/connectedDisplay';
 

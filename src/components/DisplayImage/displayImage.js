@@ -11,24 +11,13 @@ const shouldScale = url => {
   return scale
 }
 
-const shouldSkip = (url, props) => {
-  let img = new Image()
-  img.src = url
-  img.onload = () => {
-    if (img.height >= 1800) {
-      props.next(props.current === 24 ? 0 : props.current + 1)
-    }
-  }
-}
-
 const image = props => {
   const currentImage = props.images[props.current]
-  shouldSkip(currentImage && currentImage.url, props)
   return shouldScale(currentImage && currentImage.url) ? (
     <div className="aspect-ratio aspect-ratio--5x8 mb4">
-      <div
+      <img
         className="aspect-ratio--object cover"
-        style={{background: `url(currentImage.url) center`}}
+        src={currentImage && currentImage.url}
       />
     </div>
   ) : (
@@ -38,9 +27,14 @@ const image = props => {
 
 const DisplayImage = props => {
   return (
-    <article className="display-image mw5 mt6 mw6-ns shadow-5 center">
-      {image(props)}
-    </article>
+    <div>
+      <h3 className="tc">
+        {props.images[props.current] && props.images[props.current].title}
+      </h3>
+      <article className="display-image mw5 mt3 mw6-ns shadow-5 center">
+        {image(props)}
+      </article>
+    </div>
   )
 }
 

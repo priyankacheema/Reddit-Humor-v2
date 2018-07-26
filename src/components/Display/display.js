@@ -11,9 +11,9 @@ class Display extends Component {
 
   render() {
     return (
-      <section className="display pt4">
+      <section className="display pt2">
+        <Buttons/>
         <DisplayImage />
-        <Buttons />
       </section>
     )
   }

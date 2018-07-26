@@ -5,7 +5,8 @@ import { setCurrentIndex } from '../../actions/humor';
 const mapStateToProps = ({humor}) => {
   return {
     images: humor.images,
-    current: humor.current
+    current: humor.current,
+    nsfw: humor.nsfw
   }
 }
 
