@@ -19,7 +19,7 @@ const Buttons = props => {
       <icon.ChevronsLeft
         className="previous ph3"
         onClick={() =>
-          props.previous(props.current === 0 ? 24 : props.current - 1)
+          props.previous(props.current === 0 ? props.images.length - 1 : props.current - 1)
         }
       />
       <icon.ChevronsRight
