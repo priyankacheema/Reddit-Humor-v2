@@ -14,7 +14,9 @@ export const initStore = (state = initialState, {dataLoad}) => {
 
     const likes = {...dataLoad.likes, ...state.likes}
     const nsfw = {...dataLoad.nsfw, ...state.nsfw}
-    const images = [...dataLoad.images]
+
+    const images = [...dataLoad.images].filter((image) => !nsfw[image.id])
+
     const gifDuration = dataLoad.gifDuration
 
     return {...state, images, likes, nsfw, gifDuration}

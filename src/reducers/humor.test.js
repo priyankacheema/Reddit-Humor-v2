@@ -13,17 +13,39 @@ describe('humor reducers', () => {
             it('should update the store with the data load', () => {
 
                 const dataLoad = {
+
                     images: [{}, {}, {}],
                     likes: {xyz8u0B: 0},
                     nsfw: {xyz8u0B: false},
                     gifDuration: {xyz8u0B: 0}
+
                 }
+
                 const action = actions.initStore(dataLoad)
 
                 const expectedState = {...reducers.initialState, ...dataLoad}
                 const newState = reducers.humorReducer(undefined, action)
 
                 expect(newState).to.equal(expectedState)
+
+            })
+
+            it('should contain no images that have been flagged as NSFW', () => {
+
+                const dataLoad = {
+
+                    images: [{id: 'xyz8u0B'}, {id: 'xadsfds21'}, {id: 'zcvcsad3J'}],
+                    likes: {xyz8u0B: 0, xadsfds21: 0, zcvcsad3J: 0},
+                    nsfw: {xyz8u0B: true, xadsfds21: false, zcvcsad3J: false},
+                    gifDuration: {xyz8u0B: 0, xadsfds21: 0, zcvcsad3J: 0}
+
+                }
+
+                const action = actions.initStore(dataLoad)
+                const newState = reducers.humorReducer(undefined, action)
+
+                const hasNoNsfw = newState.images.every((image) => image.id !== 'xyz8u0B')
+                expect(hasNoNsfw).to.equal(true)
 
             })
 
