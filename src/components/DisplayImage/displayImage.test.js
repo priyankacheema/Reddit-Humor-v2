@@ -12,11 +12,11 @@ describe('Given DisplayImage', () => {
   ]
 
   function requiredProps(overRides={}) {
-    const props = { 
+    const props = {
       images,
-      current: 0 
+      current: 0
     };
-    
+
     return { ...props, ...overRides }
   }
 
@@ -26,7 +26,7 @@ describe('Given DisplayImage', () => {
 
   it('should exist with a specifying class name', () => {
     const component = renderComponent();
-    expect(component.is('section.display-image')).to.be.true();
+    expect(component.is('article.display-image')).to.be.true();
   })
 
   it('should contain an image', () => {
