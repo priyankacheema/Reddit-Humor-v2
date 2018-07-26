@@ -14,10 +14,10 @@ describe('humor reducers', () => {
 
                 const dataLoad = {
 
-                    images: [{}, {}, {}],
-                    likes: {xyz8u0B: 0},
-                    nsfw: {xyz8u0B: false},
-                    gifDuration: {xyz8u0B: 0}
+                    images: [{id: 'xyz8u0B'}, {id: 'xadsfds21'}, {id: 'zcvcsad3J'}],
+                    likes: {xyz8u0B: 0, xadsfds21: 0, zcvcsad3J: 0},
+                    nsfw: {xyz8u0B: false, xadsfds21: false, zcvcsad3J: false},
+                    gifDuration: {xyz8u0B: 0, xadsfds21: 0, zcvcsad3J: 0}
 
                 }
 
