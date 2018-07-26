@@ -8,7 +8,7 @@ import {
     getPostImageInfo,
     isImage,
     isStickied,
-    extractForStore
+    extractForStore, isUsableHeight
 } from './parseUtils'
 
 const data = require('../data/response')
@@ -23,7 +23,7 @@ describe('parseUtils', () => {
             const posts = getPosts(data)
 
             expect(posts).to.be.a.array()
-            expect(posts.length).to.equal(25)
+            expect(posts.length).to.equal(24)
 
         })
 
@@ -40,6 +40,15 @@ describe('parseUtils', () => {
 
             const posts = getPosts(data)
             const allImages = posts.every((post) => post.preview !== false)
+
+            expect(allImages).to.be.true()
+
+        })
+
+        it('should have no images with height greater than 1799 in the array to prevent UI scaling issues', () => {
+
+            const posts = getPosts(data)
+            const allImages = posts.every((post) => isUsableHeight(post) === true)
 
             expect(allImages).to.be.true()
 
