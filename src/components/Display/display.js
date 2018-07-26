@@ -55,9 +55,6 @@ class Display extends Component {
         }, time)
 
     }
-
-
-
 }
 
 Display.propTypes = {

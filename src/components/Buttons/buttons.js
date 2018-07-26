@@ -1,53 +1,63 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
+import sendToSlack from '../../utils/postToSlack'
+import * as icon from 'react-feather'
+import './buttons.css'
 
-const Buttons = (props) => {
-  const { increaseCurrent, decreaseCurrent, updateLike, updateNSFW, shareWithSlack  } = props;
-
-  const handleClick = (e) => {
-    const buttonType = e.target.name;
-
-    switch(buttonType) {
-      case 'next': 
-        return increaseCurrent();
-      case 'previous': 
-        return decreaseCurrent();
-      case 'like': 
-        return updateLike();
-      case 'NSFW': 
-        return updateNSFW();
-      case 'slack': 
-        return shareWithSlack();
-      default:
-        return
-    }
-  }
-  
+const Buttons = props => {
+  const id = props.image && props.image.id
   return (
-    <section className="user-buttons">
-      <button className="like-button" name='like' onClick={handleClick}>Like</button>
-      <button className="NSFW-button" name='NSFW' onClick={handleClick}>NSFW</button>
-      <button className="previous-button" name='previous' onClick={handleClick}>Previous</button>
-      <button className="next-button" name='next' onClick={handleClick}>Next</button>
-      <button className="slack-button" name='slack' onClick={handleClick}>Share To Slack</button>
-    </section>
+    <main className="user-buttons relative justify-center flex items-center pa4">
+      <icon.Heart
+        className="like grow ph3"
+        onClick={() => props.like(props.image.id)}
+      />
+      <h2 className='ph3'>{props.likes[id]}</h2>
+      <icon.AlertTriangle
+        className="nsfw grow link ph3"
+        onClick={() => {
+          props.nsfw(props.image.id)
+          props.next(
+            props.current === props.images.length - 1 ? 0 : props.current + 1
+          )}
+        }
+      />
+      <icon.ChevronsLeft
+        className="previous dim grow link ph3"
+        onClick={() =>
+          props.previous(props.current === 0 ? props.images.length - 1 : props.current - 1)
+        }
+      />
+      <icon.ChevronsRight
+        className="next dim grow link ph3"
+        onClick={() =>
+          props.next(
+            props.current === props.images.length - 1 ? 0 : props.current + 1
+          )
+        }
+      />
+      <div
+        onClick={() => props.share(props.image)}
+        className="share grow link hover-silver near-black ph3 dib h2 w1 mr3"
+      />
+    </main>
   )
 }
 
 Buttons.defaultProps = {
-  increaseCurrent: () => {},
-  decreaseCurrent: () => {},
-  updateLike: () => {},
-  updateNSFW: () => {},
-  shareWithSlack: () => {}
+  next: () => {},
+  previous: () => {},
+  like: () => {},
+  nsfw: () => {},
+  share: post => sendToSlack(post.title, post.url, post.id)
 }
 
 Buttons.propTypes = {
-  increaseCurrent: PropTypes.func.isRequired,
-  decreaseCurrent: PropTypes.func.isRequired,
-  updateLike: PropTypes.func.isRequired,
-  updateNSFW: PropTypes.func.isRequired,
-  shareWithSlack: PropTypes.func.isRequired
+  next: PropTypes.func.isRequired,
+  previous: PropTypes.func.isRequired,
+  like: PropTypes.func.isRequired,
+  nsfw: PropTypes.func.isRequired,
+  share: PropTypes.func.isRequired
 }
 
 export default Buttons
