@@ -15,7 +15,8 @@ const mapStateToProps = ({humor}) => {
   return {
     current: humor.current,
     image: humor.images[humor.current],
-    images: humor.images
+    images: humor.images,
+    likes: humor.likes
   }
 }
 
