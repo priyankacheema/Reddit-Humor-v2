@@ -115,13 +115,13 @@ describe('Given Buttons', () => {
 
     it('should call the next method when click', () => {
       button.simulate('click')
-      sinon.assert.calledOnce(next)
+      sinon.assert.calledTwice(next)
     })
   })
 
   describe('The share Button', () => {
     const component = renderComponent()
-    const button = component.find('Slack.share')
+    const button = component.find('div.share')
 
     it('should contain a share button', () => {
       expect(button.exists()).to.be.true()
