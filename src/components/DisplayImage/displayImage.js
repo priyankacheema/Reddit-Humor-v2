@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const shouldScale = url => {
-  let scale
-  let img = new Image()
+  let scale = false
+  const img = new Image()
   img.src = url
   img.onload = () => {
     if (img.height >= 600) scale = true
@@ -18,6 +18,7 @@ const image = props => {
       <img
         className="aspect-ratio--object cover"
         src={currentImage && currentImage.url}
+        alt="reddit-humor"
       />
     </div>
   ) : (
