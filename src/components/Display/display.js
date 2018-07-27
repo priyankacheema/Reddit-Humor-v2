@@ -14,8 +14,9 @@ class Display extends Component {
     }
 
     componentDidUpdate() {
-        
-        this.updateIndexEvery(20000)
+
+        this.timeoutId !== undefined && clearInterval(this.timeoutId)
+        this.timeoutId = this.updateIndexEvery(20000)
 
     }
 
