@@ -1,0 +1,16 @@
+language: node_js
+cache:
+  directories:
+    - ~/.npm
+    - node_modules
+notifications:
+  email: false
+node_js:
+  - '8'
+script:
+  - CI=true yarn test
+after_success:
+  - yarn run travis-deploy-once --pro
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
