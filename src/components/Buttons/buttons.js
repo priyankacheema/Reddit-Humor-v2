@@ -9,12 +9,12 @@ const Buttons = props => {
   return (
     <main className="user-buttons relative justify-center flex items-center pa4">
       <icon.Heart
-        className="like grow ph3"
+        className="like grow mr5"
         onClick={() => props.like(props.image.id)}
       />
-      <h2 className='ph3'>{props.likes[id]}</h2>
+      <h2 className='mh5'>{props.likes[id]}</h2>
       <icon.AlertTriangle
-        className="nsfw grow link ph3"
+        className="nsfw grow link mh5"
         onClick={() => {
           props.nsfw(props.image.id)
           props.next(
@@ -23,13 +23,13 @@ const Buttons = props => {
         }
       />
       <icon.ChevronsLeft
-        className="previous dim grow link ph3"
+        className="previous dim grow link mh5"
         onClick={() =>
           props.previous(props.current === 0 ? props.images.length - 1 : props.current - 1)
         }
       />
       <icon.ChevronsRight
-        className="next dim grow link ph3"
+        className="next dim grow link mh5"
         onClick={() =>
           props.next(
             props.current === props.images.length - 1 ? 0 : props.current + 1
@@ -38,7 +38,7 @@ const Buttons = props => {
       />
       <div
         onClick={() => props.share(props.image)}
-        className="share grow link hover-silver near-black ph3 dib h2 w1 mr3"
+        className="share grow link w2 ml5"
       />
     </main>
   )

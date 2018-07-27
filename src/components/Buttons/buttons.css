@@ -11,6 +11,10 @@
     fill:orange
 }
 
+.nsfw:hover{
+    color:orange
+}
+
 .share{
     display: inline-block;
     width: 50px;
