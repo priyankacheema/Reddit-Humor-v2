@@ -3683,7 +3683,7 @@ gif-me-info@^1.0.1:
     axios "^0.16.2"
     gify-parse "^1.0.6"
 
-gify-parse@^1.0.6:
+gify-parse@^1.0.6, gify-parse@^1.0.7:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/gify-parse/-/gify-parse-1.0.7.tgz#d562608c297834f03c5206b5a673c8d62956c163"
   dependencies:

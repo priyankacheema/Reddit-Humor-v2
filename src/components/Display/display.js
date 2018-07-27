@@ -14,10 +14,8 @@ class Display extends Component {
     }
 
     componentDidUpdate() {
-
         this.timeoutId !== undefined && clearInterval(this.timeoutId)
         this.timeoutId = this.updateIndexEvery(20000)
-
     }
 
     render() {
@@ -40,12 +38,12 @@ class Display extends Component {
 
     }
 
-    updateIndexEvery = (ms) => {
+    updateIndexEvery = async (ms) => {
 
         const  {images, current, setCurrentIndex} = this.props
         const image = images[current]
 
-        const time = image.gif ? getGifDuration(image.url) + ms : ms
+        const time = image.gif ? await getGifDuration(image.url) + ms : ms
 
         return setTimeout(() => {
 
