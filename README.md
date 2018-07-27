@@ -1,66 +1,23 @@
-# Reddit Humor Re-write
+# Reddit Humor V2 (RHv2)
 
-This is a draft for a ground up rebuild with sound architecture using Redux and TDD so it can
-be more easily maintained and extended in the future. The current, visual design can be maintained.
+RHv2 is a ground up rewrite of the original [Reddit Humor](https://github.com/aquent-it-solutions/reddit-humor), the goal was to develop a maintainable codebase that could be easily extended by trainees.
 
-### Goals
-Each of these are set with the next set of developers coming in behind us in mind.
-* The app follows conventions we've covered in class and that are used at Deere
-* Improve the app with bug fixes
-* There is a clear architecture so when it is reviewed by the next group they see a cohesive code base.
-  * If you examine the current code, it's really messy. By working together and taking the same approach we can circumvent this.
-* Improve the app with additional features
-  
-  
-### Feature Fixes:
-* Display `gifs`
-  * Currently they are displayed as a static images due to not accounting for `gif` duration
-    * `gifs` can be extracted from `data.preview.variants.gif.source.url`
-* Scale images appropriately,
-  * Low resolution images should be `fit-center` and high resolution images should be `scaled-center`
-  
-### New Features:
-* Like button
-* Previous button
-* Share to Slack button
+##### What is Reddit Humor?
+Reddit humor is a fun internal web app intended to be displayed on a communal monitor. The app pulls data from [/r/ProgrammerHumor](https://www.reddit.com/r/ProgrammerHumor/) every hour and grabs the top 25 posts. It then displays each title and image for 20 seconds before cycling to the next! It has some great interactivity such as liking and sharing. 
+### New Features
+ * Previous button to cycle to the last displayed image.
+ * Like button to allow users to interact with funny images.
+ * Share to Slack button which will post the currently displayed image to our `#reddithumor` channel.
+ * Gifs are now correctly displayed, accounting for their duration.
 
-#
-### Implemention Details
-##### Shape of the Redux Store
-* `images: []`,
-  * This is an `array` of `objects` containing an image `url` , `id`, and `title`: `{url: 'https://dafa', id: 1, title: 'some title', gif: true}`
-* `current:  0`
-  * This is the current `index` of `images` being displayed
-* `likes: {}`
-  * This is a `table` of `id` to `number_of_likes`, this is important to store independently because the `images array` will be wiped and replaced on a timer. `{ [id]: 0, [id]: 2 }`
-* `nsfw: {}`
-  * This is another `table`, except is will be a mapping of flagged posts: `{ [id]: true, [id]: false }`
-* `gifDuration: {}`
-  * This is another `table`, if an `image` is a `gif` then it's duration will be stored here: `{ [id]: 1021, [id]: 111 }`
-  * If an image is not a gif, perform a lookup in this table will return `undefined`
-  
-##### Components
-* `App` `dispatch: yes`,
-   * This is the root level component, when it is mounted, given an interval, it should retrieve top posts from reddit.
-     * The retrieved posts should overwrite the `images` array in redux store.
- * `Display` `props: images, current, gifDuration`, `dispatch: yes`
-   * This component handles actually displaying the images.
-     * `Display` will always display the image on the `current` index
-     * Given an interval, once the component has mounted, it should `dispatch` to update the `current` index in the store
-       * This should account for `gif` duration
-         * This requires a helper function: `getGifDuration`
- * `Next Button` `props: `,
-   * This component will update `current` in the redux store with the next image in `images`
-  * `Prev Button`,
-    * This component will update `current` in the redux store with the next image in `images`
-  * `NSFW Button`,
-    * This component will flag the `current index`  by updating the `nsfw table` in the redux store
-  * `Fullscreen Button`,
-    * This component will make the browser window full screen
-  * `Like Button`,
-    * This component will increment the `current image id` in `likes` in the redux store, it will also display the number of likes next to the button.
-  * `Slack Share`,
-    * This component will utilize the Slack Web-hook to post the `image` to one of our Slack channels
-    * Create a new channel on Slack
-    
- ##### Reddit API Request
+### State Management
+* Application state is managed using Redux.
+
+### Additional Dependencies
+ * icons: [react-feather](https://github.com/carmelopullara/react-feather)
+ * design: [tachyons](https://tachyons.io/) 
+ * gif duration extraction: [gif-me-info](https://github.com/STRsplit/gif-me-info)
+ 
+### Contribution
+ * Check open issues or file a new one, PR's are always welcome!
+ * For feature additions please avoid using React state for consistency.
