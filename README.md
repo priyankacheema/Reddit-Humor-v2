@@ -16,7 +16,7 @@ Reddit humor is a fun internal web app intended to be displayed on a communal mo
 ### Additional Dependencies
  * icons: [react-feather](https://github.com/carmelopullara/react-feather)
  * design: [tachyons](https://tachyons.io/) 
- * gif duration extraction: [gif-me-info](https://github.com/STRsplit/gif-me-info)
+ * gif duration extraction: [gify-parse](https://github.com/JonasHavers/node-gify-parse)
  
 ### Contribution
  * Check open issues or file a new one, PR's are always welcome!
