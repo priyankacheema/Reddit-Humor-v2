@@ -38,8 +38,10 @@ export const setNsfw = (state, {id}) => {
 
     const nsfw = {...state.nsfw}
     nsfw[id] = true
+    let images = state.images.filter(image => image.id !== id)
+    console.log(images)
 
-    return {...state, nsfw}
+    return {...state, nsfw, images}
 
 }
 
