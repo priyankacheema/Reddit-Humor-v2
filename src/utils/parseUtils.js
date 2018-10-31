@@ -14,7 +14,13 @@ export const isStickied = (post) => post.stickied ? true : false
 export const getId = (post) => post.id
 export const getTitle = (post) => post.title
 export const isGif = (post) => post.preview && post.preview.variants && post.preview.variants.gif ? true : false
-export const getUrl = (post) => isGif(post) ? post.preview.variants.gif.source.url : (post.preview.images[0].resolutions.length === 3 ? post.preview.images[0].resolutions[2].url : post.preview.images[0].resolutions[3].url )
+export const getUrl = post =>
+  (isGif(post)
+    ? post.preview.variants.gif.source.url
+    : post.preview.images[0].resolutions.length === 3
+        ? post.preview.images[0].resolutions[2].url
+        : post.preview.images[0].resolutions[3].url)
+
 export const getPostImageInfo = (post) => ({id: getId(post), url: getUrl(post), title: getTitle(post), gif: isGif(post)})
 
 export const extractForStore = (posts) => {
