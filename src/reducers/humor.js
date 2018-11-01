@@ -31,18 +31,13 @@ export const increaseLikes = (state, {id}) => {
     const likes = {...state.likes, [id]: numLikes}
 
     return {...state, likes}
-
 }
 
 export const setNsfw = (state, {id}) => {
-
     const nsfw = {...state.nsfw}
     nsfw[id] = true
     let images = state.images.filter(image => image.id !== id)
-    console.log(images)
-
     return {...state, nsfw, images}
-
 }
 
 export const humorReducer = (state = initialState, action) => {
