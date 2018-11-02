@@ -13,7 +13,7 @@ export default function sendToSlack (
     attachments: [
       {
         fallback: 'this image failed to post',
-        text: `${message}`,
+        text: ``,
         image_url: `${imageUrl}`,
         thumb_url: `${imageUrl}`
       }

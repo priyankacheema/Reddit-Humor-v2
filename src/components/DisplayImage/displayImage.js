@@ -23,7 +23,9 @@ DisplayImage.defaultProps = {
   next: () => {},
   images: [],
   current: undefined,
-  nsfw: {}
+  nsfw: {
+    id: undefined
+  }
 }
 
 DisplayImage.propTypes = {

@@ -46,6 +46,12 @@ describe('Given a Connected Display Component', () => {
       const component = renderComponent();
       expect(component.props().current).to.equal(0)
     })
+
+    it('contains a prop of nsfw', () => {
+      const component = renderComponent();
+      expect(component.props().nsfw).to.equal({})
+      expect(component.props().nsfw.id).to.equal(undefined)
+    })
   })
   
 })

@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import App from './components/App/App'
 import React from 'react'
@@ -10,8 +10,9 @@ import 'tachyons'
 
 const store = createStore(
   rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  applyMiddleware(thunk)
+  compose(	
+  	applyMiddleware(thunk)
+  )
 )
 
 ReactDOM.render(
