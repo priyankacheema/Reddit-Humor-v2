@@ -4,9 +4,6 @@ import sendToSlack from '../../utils/postToSlack'
 import * as icon from 'react-feather'
 import './buttons.css'
 import openFullscreen from '../../utils/fullscreen';
-import { connect } from 'react-redux'
-import { setCurrentIndex, setNsfw, increaseLikes } from '../../actions/humor'
-
 
 const Buttons = props => {
   const id = props.image && props.image.id
@@ -68,23 +65,4 @@ Buttons.propTypes = {
   share: PropTypes.func.isRequired
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    previous: id => dispatch(setCurrentIndex(id)),
-    next: id => dispatch(setCurrentIndex(id)),
-    nsfw: id => dispatch(setNsfw(id)),
-    like: id => dispatch(increaseLikes(id))
-  }
-}
-
-
-const mapStateToProps = ({humor}) => {
-  return {
-    current: humor.current,
-    image: humor.images[humor.current],
-    images: humor.images,
-    likes: humor.likes
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Buttons)
+export default Buttons
