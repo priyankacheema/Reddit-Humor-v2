@@ -12,6 +12,7 @@ class Display extends Component {
     }
 
     async componentDidUpdate() {
+        console.log('Priyanka Cheema')
         this.timeoutId !== undefined && clearInterval(this.timeoutId)
         this.timeoutId = await this.updateIndexEvery(20000)
     }
