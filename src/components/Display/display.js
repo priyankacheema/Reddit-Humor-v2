@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import Buttons from '../Buttons/connectedButtons';
+import Buttons from '../Buttons/buttons';
 import DisplayImage from '../DisplayImage/connectedDisplayImage';
 import {getGifDuration} from '../../utils/gifDuration'
 import {getNextIndex} from '../../utils/getNextIndex'
+import { getHumor, setCurrentIndex } from '../../actions/humor';
+import { connect } from 'react-redux';
+
 
 class Display extends Component {
     
@@ -65,4 +68,5 @@ Display.propTypes = {
     getGifDuration: PropTypes.func.isRequired
 }
 
-export default Display;
+const mapStateToProps = ({humor}) => ({images: humor.images, current: humor.current})
+export default connect( mapStateToProps, { getHumor,  setCurrentIndex})(Display)
