@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Display from '../Display/display';
+import Display from '../Display/connectedDisplay';
 
 class App extends Component {
 
