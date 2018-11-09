@@ -20,7 +20,7 @@ describe('Given a Connected Display Component', () => {
       likes: {},
       nsfw: {},
       current: 0,
-      gifDuration: {}
+      gifDuration: {},
     }
   })
 
