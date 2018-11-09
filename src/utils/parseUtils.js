@@ -4,6 +4,8 @@ export const getPosts = (response) => response.data.children.reduce(postReducer,
 const postReducer = (posts, child) => {
 
     const post = child.data
+    
+   // console.log(post[3].preview.images[0].resolutions)
     if (!isStickied(post) && isImage(post)) posts.push(post)
     return posts
 
@@ -18,7 +20,9 @@ export const getUrl = post => (
     isGif(post)
     ? post.preview.variants.gif.source.url
     : post.preview.images[0].resolutions[post.preview.images[0].resolutions.length -1].url
+    
 )
+
 
 export const getPostImageInfo = (post) => ({id: getId(post), url: getUrl(post), title: getTitle(post), gif: isGif(post)})
 

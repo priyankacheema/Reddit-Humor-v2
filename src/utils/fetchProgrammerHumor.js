@@ -6,6 +6,7 @@ export const fetchProgrammerHumor = async () => {
 
     try {
 
+        // const response = await fetch(URL)
         const response = await fetch(URL)
         const json = await response.json()
 

@@ -1,3 +1,4 @@
+
 import React from 'react'
 import PropTypes from 'prop-types'
 
@@ -7,6 +8,7 @@ const image = props => {
 }
 
 const DisplayImage = props => {
+
   return (
     <article className='display-image'>
       <h3 className='tc'>

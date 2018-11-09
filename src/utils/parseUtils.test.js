@@ -23,7 +23,7 @@ describe('parseUtils', () => {
             const posts = getPosts(data)
 
             expect(posts).to.be.a.array()
-            expect(posts.length).to.equal(24)
+            expect(posts.length).to.equal(25)
 
         })
 
