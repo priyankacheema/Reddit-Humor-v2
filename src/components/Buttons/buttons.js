@@ -3,14 +3,16 @@ import PropTypes from 'prop-types'
 import sendToSlack from '../../utils/postToSlack'
 import * as icon from 'react-feather'
 import './buttons.css'
-import openFullscreen from '../../utils/fullscreen';
+
 
 const Buttons = props => {
   const id = props.image && props.image.id
+  console.log("Pranay")
   return (
     <main className="user-buttons relative justify-center flex items-center pa4">
       <icon.Heart
         className="like grow mr5"
+        
         onClick={() => props.like(props.image.id)}
       />
       <h2 className='mh5'>{props.likes[id]}</h2>
@@ -37,10 +39,7 @@ const Buttons = props => {
           )
         }
       />
-        <icon.Maximize 
-          onClick={() => openFullscreen()}
-          className='dim grow link mh5'
-        />
+    
       <div
         onClick={() => props.share(props.image)}
         className="share grow link w2 ml5"
