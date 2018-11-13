@@ -4,8 +4,6 @@ export const getPosts = (response) => response.data.children.reduce(postReducer,
 const postReducer = (posts, child) => {
 
     const post = child.data
-    
-   // console.log(post[3].preview.images[0].resolutions)
     if (!isStickied(post) && isImage(post)) posts.push(post)
     return posts
 
@@ -19,12 +17,13 @@ export const isGif = (post) => post.preview && post.preview.variants && post.pre
 export const getUrl = post => (
     isGif(post)
     ? post.preview.variants.gif.source.url
-    : post.preview.images[0].resolutions[post.preview.images[0].resolutions.length -1].url
+    : post.preview.images[0].source.url
     
 )
+ export const isUsableHeight = post => (post.preview.images[0].source.height < 1799 ? true : false)
 
 
-export const getPostImageInfo = (post) => ({id: getId(post), url: getUrl(post), title: getTitle(post), gif: isGif(post)})
+export const getPostImageInfo = (post) => ({id: getId(post), url: getUrl(post), title: getTitle(post), gif: isGif(post), height:isUsableHeight(post)})
 
 export const extractForStore = (posts) => {
     const images = []
@@ -33,10 +32,8 @@ export const extractForStore = (posts) => {
     const gifDuration = {}
 
     posts.forEach((post) => {
-
         const imageData = getPostImageInfo(post)
         images.push(imageData)
-
         const {id} = imageData
         likes[id] = 0
         nsfw[id] = false

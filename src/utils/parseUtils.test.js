@@ -44,12 +44,11 @@ describe('parseUtils', () => {
             expect(allImages).to.be.true()
 
         })
-
+       
         it('should have no images with height greater than 1799 in the array to prevent UI scaling issues', () => {
 
             const posts = getPosts(data)
             const allImages = posts.every((post) => isUsableHeight(post) === true)
-
             expect(allImages).to.be.true()
 
         })
@@ -157,24 +156,21 @@ describe('parseUtils', () => {
         })
 
         describe('getUrl', () => {
-
            it('should return either a gif-image-url or a regular-image-url', () => {
 
                const gifUrl = 'https://isagif'
                const notGifUrl = 'https://notagif'
 
-               const mockDataWithGif = {preview: {variants: {gif: {source: {url: gifUrl}}}}, gif: false}
+               const mockDataWithGif = {preview: {variants: {gif: {source: {url: gifUrl}}}}, gif: true}
                const mockDataNoGif = {preview: {images: [{source: {url: notGifUrl}}]}}
-
+                        
                expect(getUrl(mockDataWithGif)).to.equal(gifUrl)
                expect(getUrl(mockDataNoGif)).to.equal(notGifUrl)
-
            })
 
         })
 
         describe('getPostImageInfo', () => {
-
             it('should generate a structured object with properties set to the return values of `getId, getTitle, getUrl, isGif` fns', () => {
 
                 const gifUrl = 'https://isagif'
@@ -185,8 +181,8 @@ describe('parseUtils', () => {
                 const mockDataWithGif = {id: expectedId, title:expectedTitle, preview: {variants: {gif: {source: {url: gifUrl}}}}, gif: true}
                 const mockDataNoGif = {id: expectedId, title:expectedTitle, preview: {images: [{source: {url: notGifUrl}}]}, gif: false}
 
-                const expectedDataWithGif = {id: getId(mockDataWithGif), title: getTitle(mockDataWithGif), url: getUrl(mockDataWithGif), gif: isGif(mockDataWithGif)}
-                const expectedDataNoGif = {id: getId(mockDataNoGif), title: getTitle(mockDataNoGif), url: getUrl(mockDataNoGif), gif: isGif(mockDataNoGif)}
+                const expectedDataWithGif = {id: getId(mockDataWithGif), title: getTitle(mockDataWithGif), url: getUrl(mockDataWithGif), gif: isGif(mockDataWithGif), height:isUsableHeight(mockDataWithGif)}
+                const expectedDataNoGif = {id: getId(mockDataNoGif), title: getTitle(mockDataNoGif), url: getUrl(mockDataNoGif), gif: isGif(mockDataNoGif), height:isUsableHeight(mockDataNoGif)}
 
                 expect(getPostImageInfo(mockDataWithGif)).to.equal(expectedDataWithGif)
                 expect(getPostImageInfo(mockDataNoGif)).to.equal(expectedDataNoGif)
@@ -203,7 +199,7 @@ describe('parseUtils', () => {
 
                 const mockPosts = [{id, title: '010101011100101', preview: {variants: {gif: {source: {url: 'https://isagif'}}}}, gif: true}]
 
-                const expectedImages = [{id: getId(mockPosts[0]), title: getTitle(mockPosts[0]), url: getUrl(mockPosts[0]), gif: isGif(mockPosts[0])}]
+                const expectedImages = [{id: getId(mockPosts[0]), title: getTitle(mockPosts[0]), url: getUrl(mockPosts[0]), gif: isGif(mockPosts[0]), height:isUsableHeight(mockPosts[0])}]
                 const expectedLikes = {[id]: 0}
                 const expectedNsfw = {[id]: false}
                 const expectedGifDuration = {[id]: 0}
