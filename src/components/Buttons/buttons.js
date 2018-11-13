@@ -3,31 +3,28 @@ import PropTypes from "prop-types";
 import sendToSlack from "../../utils/postToSlack";
 import * as icon from "react-feather";
 import "./buttons.css";
+import { isNode } from "postcss-selector-parser";
 
 const Buttons = props => {
   const id = props.image && props.image.id;
 
   return (
-    
-    <div  className="menu">
-  
-      <icon.ThumbsUp  size={35}
-     
-        className="like grow mr1"
+    <div className="menu">
+      {" "}
+      <icon.ThumbsUp
+        size={35}
+        className="like grow na1 "
         onClick={() => props.like(props.image.id)}
       />
-       
- 
-  <h1 className="mh1" >{props.likes[id]}</h1>
-
-   <icon.ThumbsDown  size={35}
-        className="dislike grow mr1"
+      <h1 className="mh1">{props.likes[id]}</h1>{" "}
+      <icon.ThumbsDown
+        size={35}
+        className="dislike grow ml5"
         onClick={() => props.dislike(props.image.id)}
       />
-  <h1 className="mh1" >{props.dislikes[id]}</h1>
-  
-
-      <icon.AlertTriangle  size={35}
+      <h1 className="mh1">{props.dislikes[id]}</h1>
+      <icon.AlertTriangle
+        size={35}
         className="nsfw grow link mh5"
         onClick={() => {
           props.nsfw(props.image.id);
@@ -35,9 +32,9 @@ const Buttons = props => {
             props.current === props.images.length - 1 ? 0 : props.current + 1
           );
         }}
-      ></icon.AlertTriangle>
-    
-      <icon.ArrowLeft  size={35}
+      />
+      <icon.ArrowLeft
+        size={35}
         className="previous dim grow link mh5"
         onClick={() =>
           props.previous(
@@ -45,7 +42,8 @@ const Buttons = props => {
           )
         }
       />
-      <icon.ArrowRight  size={35}
+      <icon.ArrowRight
+        size={35}
         className="next dim grow link mh5"
         onClick={() =>
           props.next(
@@ -58,8 +56,6 @@ const Buttons = props => {
         className="share grow link w2 ml5"
       />
     </div>
-    
-    
   );
 };
 
@@ -67,7 +63,7 @@ Buttons.defaultProps = {
   next: () => {},
   previous: () => {},
   like: () => {},
-  dislike: ()=>{},
+  dislike: () => {},
   nsfw: () => {},
   share: post => sendToSlack(post.title, post.url, post.id)
 };
